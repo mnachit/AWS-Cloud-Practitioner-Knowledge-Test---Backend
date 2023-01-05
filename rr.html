@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <style>
+      .quiz {
+        width: 500px;
+        margin: auto;
+        text-align: center;
+      }
+      .question {
+        font-size: 22px;
+        margin-bottom: 20px;
+      }
+      .answers {
+        display: flex;
+        justify-content: space-around;
+      }
+      .answer {
+        width: 30%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+      .answer:hover {
+        background-color: #f2f2f2;
+      }
+      .selected {
+        background-color: #f2f2f2;
+      }
+      .result {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="quiz">
+      <div class="question">What is the capital of France?</div>
+      <div class="answers">
+        <div class="answer" onclick="selectAnswer(this)">Paris</div>
+        <div class="answer" onclick="selectAnswer(this)">London</div>
+        <div class="answer" onclick="selectAnswer(this)">Rome</div>
+      </div>
+      <div class="result">Click on an answer to select it.</div>
+    </div>
+
+    <script>
+      function selectAnswer(selectedAnswer) {
+        // Clear previously selected answers
+        let answers = document.getElementsByClassName("answer");
+        for (let i = 0; i < answers.length; i++) {
+          answers[i].classList.remove("selected");
+        }
+
+        // Select current answer
+        selectedAnswer.classList.add("selected");
+
+        // Display result
+        let resultDiv = document.getElementsByClassName("result")[0];
+        if (selectedAnswer.innerHTML === "Paris") {
+          resultDiv.innerHTML = "Correct!";
+        } else {
+          resultDiv.innerHTML = "Incorrect. The correct answer is Paris.";
+        }
+      }
+    </script>
+  </body>
+</html>

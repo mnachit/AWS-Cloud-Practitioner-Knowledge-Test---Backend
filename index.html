@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="option-one-label"></p>
+    <p id="option-one-label1"></p>
+</body>
+<script>
+    var parts;
+
+    async function getText() {
+    let myObject = await fetch("questions.php");
+    let myText = await myObject.text();
+    console.log(myText.length);
+    var jamal = JSON.parse(myText);
+    zagzoug(jamal);
+    }
+    getText();
+    function zagzoug(data)
+    {
+        let random;
+        random = Math.floor((Math.random() * data.length));
+        // console.log(data.question);
+        document.getElementById("option-one-label1").innerHTML = data[random].options[0];
+        document.getElementById("option-one-label").innerHTML = data[random].question;
+    }
+    
+
+    // document.getElementById("option-one-label").innerHTML = jamal[random].options;
+    // document.getElementById("option-one-label1").innerHTML = jamal[random].question;
+</script>
+</html>
